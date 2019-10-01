@@ -17,9 +17,6 @@ Fae::Engine.routes.draw do
   get 'activity' => 'pages#activity_log', as: 'activity_log'
   post 'activity/filter' => 'pages#activity_log_filter', as: 'activity_log_filter'
 
-  get 'first_user' => 'setup#first_user'
-  post 'first_user' => 'setup#create_first_user'
-
   # AJAX
   delete 'files/:id/delete_file' => 'files#delete_file', as: :delete_file
   delete 'images/:id/delete_image' => 'images#delete_image', as: :delete_image

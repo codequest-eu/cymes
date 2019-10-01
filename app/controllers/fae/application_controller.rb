@@ -10,7 +10,6 @@ module Fae
     helper Fae::FaeHelper
 
     before_action :check_disabled_environment
-    before_action :first_user_redirect
     before_action :authenticate_user!
     before_action :build_nav
     before_action :set_option
@@ -92,10 +91,6 @@ module Fae
     # redirect to requested page after sign in
     def after_sign_in_path_for(resource)
       request.env['omniauth.origin'] || stored_location_for(resource) || fae.root_path
-    end
-
-    def first_user_redirect
-      redirect_to fae.first_user_path if Fae::User.live_super_admins.blank?
     end
 
     def set_change_user

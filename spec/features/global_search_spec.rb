@@ -38,7 +38,7 @@ feature 'Global search' do
   # 1) Global search search results get authorized
   #    Failure/Error: Unable to find matching line from backtrace
   #    RuntimeError:
-  #      Role 'super admin' does not exist in Fae::Role, run rake fae:seed_db
+  #      Role 'super admin' does not exist in Fae::Role
   #    # ./app/controllers/fae/setup_controller.rb:50:in `check_roles'
 
   # see dummy app's authorization concern for auth mapping used here

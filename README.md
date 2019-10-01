@@ -3,13 +3,13 @@
 
 ### CMS for Rails. For Reals.
 
-[![Code Climate](https://codeclimate.com/github/wearefine/fae/badges/gpa.svg)](https://codeclimate.com/github/wearefine/fae)
-
 Like many Rails CMS engines, Fae delivers all the basics to get you up and running quickly: authentication, authorization, a sleek UI, form helpers, image processing and workflows. But unlike other engines, Fae's generated models, controllers, and views are built to customize and scale.
 
 Fae 2.0 supports Rails 5.0 to 5.2, support for Rails 4.x is deprecated as of Fae 2.0.
 
 ## Installation
+
+0) Set `config.api_only = false` and uncomment `require "sprockets/railtie"` in config/application.rb file
 
 1) Add the gem to your Gemfile and run `bundle install`
 
@@ -22,8 +22,6 @@ gem 'fae-rails'
 ```bash
 $ rails g fae:install
 ```
-
-3) Visit `/admin` and setup your super admin account
 
 ## Documentation
 
@@ -92,4 +90,3 @@ https://www.faecms.com/documentation
 ## [Changelog](CHANGELOG.md)
 
 ## [MIT License](LICENSE)
-

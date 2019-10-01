@@ -47,9 +47,8 @@ RUBY
     def build_initializer
       init_source = options.fine ? "../templates/initializers/fae_fine.rb" : "../templates/initializers/fae.rb"
       copy_file ::File.expand_path(::File.join(__FILE__, init_source)), "config/initializers/fae.rb"
-      inject_into_file "config/initializers/fae.rb", after: "Fae.setup do |config|\n" do <<-RUBY
-\n  config.devise_secret_key = '#{SecureRandom.hex(64)}'\n
-RUBY
+      inject_into_file "config/initializers/fae.rb", after: "Fae.setup do |config|\n" do
+        "\n  config.devise_secret_key = ENV.fetch('DEVISE_SECRET_KEY')\n"
       end
     end
 

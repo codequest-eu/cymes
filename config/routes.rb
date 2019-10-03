@@ -10,7 +10,7 @@ Fae::Engine.routes.draw do
     post 'login' => '/devise/sessions#create', as: :user_session
     get 'logout' => '/devise/sessions#destroy', as: :destroy_user_session
   end
-  resources :users
+  resources :admin_panel_users, controller: "users"
 
   get 'settings' => 'users#settings', as: 'settings'
   get 'help' => 'pages#help', as: 'help'

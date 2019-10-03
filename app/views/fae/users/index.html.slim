@@ -1,5 +1,5 @@
-- @new_path = new_user_path
-== render 'fae/shared/index_header', title: 'Users', new_button: true, button_text: t('fae.user.add_user'), breadcrumbs: false
+- @new_path = new_admin_panel_user_path
+== render 'fae/shared/index_header', title: 'Admin panel users', new_button: true, button_text: t('fae.user.add_user'), breadcrumbs: false
 
 main.content
   table.js-sort-column
@@ -15,7 +15,7 @@ main.content
     tbody
       - @users.each do |user|
         tr id="fae_user_#{user.id}"
-          td: a href=edit_user_path(user) #{user.first_name} #{user.last_name}
+          td: a href=edit_admin_panel_user_path(user) #{user.first_name} #{user.last_name}
           td = user.email
           td = user.role.name
           td = fae_date_format user.last_sign_in_at if user.last_sign_in_at.present?

@@ -1,4 +1,4 @@
-= simple_form_for(@user) do |f|
+= simple_form_for(@user, url: admin_panel_users_path) do |f|
   - if params[:action] === 'settings'
     - title = t('fae.navbar.your_settings')
   - else

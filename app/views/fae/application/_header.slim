@@ -27,7 +27,7 @@ header.main-header#js-main-header
           i.icon-settings
         ul
           - if current_user.super_admin_or_admin?
-            li: a href=fae.users_path = t('fae.navbar.users')
+            li: a href=fae.admin_panel_users_path = t('fae.navbar.users')
             li: a href=fae.activity_log_path = t('fae.navbar.activity_log')
           - if current_user.super_admin?
             li: a href=fae.option_path = t('fae.navbar.root_settings')

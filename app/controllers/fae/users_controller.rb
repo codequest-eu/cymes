@@ -28,7 +28,7 @@ module Fae
       @user = Fae::User.new(user_params)
 
       if @user.save
-        redirect_to users_path, notice: t('fae.save_notice')
+        redirect_to admin_panel_users_path, notice: t('fae.save_notice')
       else
         render action: 'new', error: t('fae.save_error')
       end
@@ -41,7 +41,7 @@ module Fae
       params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
 
       if @user.update(user_params)
-        path = current_user.super_admin_or_admin? ? users_path : fae.root_path
+        path = current_user.super_admin_or_admin? ? admin_panel_users_path : fae.root_path
         redirect_to path, notice: t('fae.save_notice')
       else
         render action: 'edit', error: t('fae.save_error')
@@ -77,7 +77,7 @@ module Fae
 
       def set_index_path
         # @index_path determines form's cancel btn path
-        @index_path = users_path
+        @index_path = admin_panel_users_path
       end
 
       def authorize_role

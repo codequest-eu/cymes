@@ -46,7 +46,7 @@ zh-CN:
     navbar:
       logout: 'Log Out'
       your_settings: 'Your Settings'
-      users: 'Users'
+      users: 'Admin panel users'
       activity_log: 'Activity Log'
       live_site: 'Live Site'
       jump_to: 'Jump to...'

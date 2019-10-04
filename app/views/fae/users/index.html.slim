@@ -20,4 +20,4 @@ main.content
           td = user.role.name
           td = fae_date_format user.last_sign_in_at if user.last_sign_in_at.present?
           td = fae_toggle user, :active unless current_user == user
-          td = fae_delete_button user, user unless current_user == user
+          td = fae_delete_button user, admin_panel_user_path(user) unless current_user == user

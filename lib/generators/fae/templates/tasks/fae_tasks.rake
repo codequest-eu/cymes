@@ -17,11 +17,15 @@ namespace :fae do
       puts '... and super admin password:'
       super_admin_password = STDIN.getpass
 
+      puts '... and confirm super admin password:'
+      super_admin_password_confirmation = STDIN.getpass
+
       super_admin = Fae::User.create(
-        role:       super_admin_role,
-        first_name: super_admin_first_name,
-        email:      super_admin_email,
-        password:   super_admin_password
+        role:                  super_admin_role,
+        first_name:            super_admin_first_name,
+        email:                 super_admin_email,
+        password:              super_admin_password,
+        password_confirmation: super_admin_password_confirmation
       )
 
       break if super_admin.valid?

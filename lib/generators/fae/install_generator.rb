@@ -8,6 +8,7 @@ module Fae
       add_route
       # copy templates and generators
       copy_file ::File.expand_path(::File.join(__FILE__, "../templates/tasks/fae_tasks.rake")), "lib/tasks/fae_tasks.rake"
+      disable_api_only_mode
       add_fae_assets
       add_navigation_concern
       add_authorization_concern
@@ -22,10 +23,9 @@ module Fae
 
     def add_route
       inject_into_file "config/routes.rb", after: "routes.draw do\n" do <<-RUBY
-\n  namespace :#{options.namespace} do
-  end
-  # mount Fae below your admin namespec
-  mount Fae::Engine => '/#{options.namespace}'\n
+  constraints :subdomain => '#{options.namespace}' do
+    mount Fae::Engine => '/'
+  end\n
 RUBY
       end
     end
@@ -51,5 +51,18 @@ RUBY
       copy_file ::File.expand_path(::File.join(__FILE__, "../templates/initializers/judge.rb")), "config/initializers/judge.rb"
     end
 
+    def disable_api_only_mode
+      gsub_file(
+        'config/application.rb',
+        /config.api_only\s*=\s*true/,
+        'config.api_only = false'
+      )
+
+      gsub_file(
+        'config/application.rb',
+        /#\s*require "sprockets\/railtie"/,
+        'require "sprockets/railtie"'
+      )
+    end
   end
 end

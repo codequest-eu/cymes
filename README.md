@@ -9,8 +9,6 @@ Fae 2.0 supports Rails 5.0 to 5.2, support for Rails 4.x is deprecated as of Fae
 
 ## Installation
 
-0) Set `config.api_only = false` and uncomment `require "sprockets/railtie"` in config/application.rb
-
 1) Add the gem to your Gemfile and run `bundle install`
 
 ```ruby

@@ -1,28 +1,19 @@
 # Quickstart Guide
-
-This installation guide is for a Rails 5.0 application. We are currently working on support for Rails 5.1.
-
-If you are starting from scratch, install Rails via:
-
-```bash
-gem install rails -v '~> 5.0.0'
 ```
 
 ## Installation
 
-1) Add the gem to your `Gemfile` and run `bundle install`.
+1) Add the gem to your Gemfile and run `bundle install`
 
 ```ruby
 gem 'fae-rails'
 ```
 
-2) Run Fae's installer.
+2) Run the installer
 
 ```bash
-rails g fae:install
+$ rails g fae:install
 ```
-
-3) Start your Rails server and visit http://localhost:3000/admin to setup your super admin user.
 
 That's it, you are up and running with Fae!
 

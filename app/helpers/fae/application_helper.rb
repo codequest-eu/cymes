@@ -43,7 +43,7 @@ module Fae
     end
 
     def fae_scope
-      fae.root_path.gsub('/', '')
+      'admin'
     end
 
     def page_title

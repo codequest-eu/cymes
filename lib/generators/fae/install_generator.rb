@@ -23,7 +23,9 @@ module Fae
 
     def add_route
       inject_into_file "config/routes.rb", after: "routes.draw do\n" do <<-RUBY
-  constraints :subdomain => '#{options.namespace}' do
+  constraints subdomain: '#{options.namespace}' do
+    scope module: '#{options.namespace}', as: '#{options.namespace}' do
+    end
     mount Fae::Engine => '/'
   end\n
 RUBY
@@ -33,6 +35,7 @@ RUBY
     def add_fae_assets
       copy_file ::File.expand_path(::File.join(__FILE__, '../templates/assets/fae.scss')), 'app/assets/stylesheets/fae.scss'
       copy_file ::File.expand_path(::File.join(__FILE__, '../templates/assets/fae.js')), 'app/assets/javascripts/fae.js'
+      copy_file ::File.expand_path(::File.join(__FILE__, '../templates/assets/config/manifest.js')), 'app/assets/config/manifest.js'
     end
 
     def add_navigation_concern

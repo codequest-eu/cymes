@@ -91,7 +91,6 @@ feature 'fae_nested_table' do
 
     admin_login
     visit edit_admin_wine_path(wine)
-
     click_link 'Add Oregon Winemaker'
     expect(page).to have_css('form#new_winemaker')
 

@@ -11,13 +11,13 @@ describe Fae::Navigation do
     it 'should return nil when current section is less than three levels' do
       nav = Fae::Navigation.new(current_user)
 
-      expect(nav.side_nav('/admin/content_blocks/home')).to be_nil
+      expect(nav.side_nav('/content_blocks/home')).to be_nil
     end
 
     it 'should return the current sections third+ levels if present' do
       nav = Fae::Navigation.new(current_user)
 
-      expect(nav.side_nav('/admin/varietals').map { |i| i[:text] }).to eq(['Varietals', 'Selling Points'])
+      expect(nav.side_nav('/varietals').map { |i| i[:text] }).to eq(['Varietals', 'Selling Points'])
     end
   end
 
@@ -28,14 +28,14 @@ describe Fae::Navigation do
       # this hash maps test queries (key) to excpected results (value)
       {
         'tio' => [
-          { text: 'Locations', nested_path: '/admin/locations' },
-          { text: 'Validation Testers', nested_path: '/admin/validation_testers' }
+          { text: 'Locations', nested_path: '/locations' },
+          { text: 'Validation Testers', nested_path: '/validation_testers' }
         ],
         'home'=> [
           {text: 'Home', nested_path: '/admin/content_blocks/home' }
         ],
         'event h' => [
-          { text: 'Event Hosts', nested_path: '/admin/people' }
+          { text: 'Event Hosts', nested_path: '/people' }
         ],
         'nope' => []
       }.each do |query, result|

@@ -29,7 +29,7 @@ feature 'Main Navigation' do
     visit admin_releases_path
 
     within('.main-header-nav') do
-      expect(page.find_link('Products')[:href]).to eq('/admin/wines')
+      expect(page.find_link('Products')[:href]).to eq('/wines')
     end
   end
 

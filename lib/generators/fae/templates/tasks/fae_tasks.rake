@@ -50,10 +50,10 @@ namespace :fae do
 
     Fae::Option.create!(
       {
-        title: 'codequest admin panel',
+        title: 'admin panel',
         singleton_guard: 0,
         time_zone: 'UTC',
-        live_url: 'https://www.codequest.com'
+        live_url: 'https://www.example.com'
       }
     )
   end

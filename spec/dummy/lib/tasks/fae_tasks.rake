@@ -9,10 +9,10 @@ namespace :fae do
 
     if Fae::Option.first.blank?
       option = Fae::Option.new({
-        title: 'codequest admin panel',
+        title: 'admin panel',
         singleton_guard: 0,
         time_zone: 'Pacific Time (US & Canada)',
-        live_url: 'https://www.codequest.com'
+        live_url: 'https://www.example.com'
         })
       option.save!
     end

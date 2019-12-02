@@ -3,11 +3,11 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'fae/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'cymes'
+  s.name        = 'fae-rails'
   s.version     = Fae::VERSION
   s.authors     = ['FINE', 'codequest']
   s.email       = ['hello@codequest.com']
-  s.homepage    = 'https://github.com/codequest-eu/fae'
+  s.homepage    = 'https://github.com/codequest-eu/cymes'
   s.summary     = 'CMS for Rails. For Reals.'
   s.description = 'CMS for Rails. For Reals.'
   s.license     = 'MIT'

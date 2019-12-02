@@ -10,15 +10,12 @@ Fae::Engine.routes.draw do
     post 'login' => '/devise/sessions#create', as: :user_session
     get 'logout' => '/devise/sessions#destroy', as: :destroy_user_session
   end
-  resources :users
+  resources :admin_panel_users
 
-  get 'settings' => 'users#settings', as: 'settings'
+  get 'settings' => 'admin_panel_users#settings', as: 'settings'
   get 'help' => 'pages#help', as: 'help'
   get 'activity' => 'pages#activity_log', as: 'activity_log'
   post 'activity/filter' => 'pages#activity_log_filter', as: 'activity_log_filter'
-
-  get 'first_user' => 'setup#first_user'
-  post 'first_user' => 'setup#create_first_user'
 
   # AJAX
   delete 'files/:id/delete_file' => 'files#delete_file', as: :delete_file

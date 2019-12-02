@@ -28,7 +28,7 @@ end
 # TODO: fix flickering test, occasionally returns:
 # Failure/Error: Unable to find matching line from backtrace
 #      RuntimeError:
-#        Role 'super admin' does not exist in Fae::Role, run rake fae:seed_db
+#        Role 'super admin' does not exist in Fae::Role
 #      # ./app/controllers/fae/setup_controller.rb:50:in `check_roles'
 # feature 'Nested Form cancel button' do
 

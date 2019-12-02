@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  namespace :admin do
+  scope module: 'admin', as: 'admin' do
     resources :beers
     resources :article_categories
     resources :articles

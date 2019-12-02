@@ -1,3 +1,6 @@
+Rails.application.config.assets.precompile +=
+  %w( html5shiv.js html5shiv-printshiv.js )
+
 Fae.setup do |config|
 
   ## devise_mailer_sender

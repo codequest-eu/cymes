@@ -2,13 +2,13 @@ module Fae
   class InstallGenerator < Rails::Generators::Base
     source_root ::File.expand_path('../templates', __FILE__)
     class_option :namespace, type: :string, default: 'admin', desc: 'Sets the namespace of the generator'
-    class_option :fine, type: :boolean, default: false, desc: 'Sets FINE\'s defaults'
 
     def install
       run 'bundle install'
       add_route
       # copy templates and generators
       copy_file ::File.expand_path(::File.join(__FILE__, "../templates/tasks/fae_tasks.rake")), "lib/tasks/fae_tasks.rake"
+      disable_api_only_mode
       add_fae_assets
       add_navigation_concern
       add_authorization_concern
@@ -23,10 +23,11 @@ module Fae
 
     def add_route
       inject_into_file "config/routes.rb", after: "routes.draw do\n" do <<-RUBY
-\n  namespace :#{options.namespace} do
-  end
-  # mount Fae below your admin namespec
-  mount Fae::Engine => '/#{options.namespace}'\n
+  constraints subdomain: /^#{options.namespace}/ do
+    scope module: '#{options.namespace}', as: '#{options.namespace}' do
+    end
+    mount Fae::Engine => '/'
+  end\n
 RUBY
       end
     end
@@ -34,6 +35,7 @@ RUBY
     def add_fae_assets
       copy_file ::File.expand_path(::File.join(__FILE__, '../templates/assets/fae.scss')), 'app/assets/stylesheets/fae.scss'
       copy_file ::File.expand_path(::File.join(__FILE__, '../templates/assets/fae.js')), 'app/assets/javascripts/fae.js'
+      copy_file ::File.expand_path(::File.join(__FILE__, '../templates/assets/config/manifest.js')), 'app/assets/config/manifest.js'
     end
 
     def add_navigation_concern
@@ -45,17 +47,25 @@ RUBY
     end
 
     def build_initializer
-      init_source = options.fine ? "../templates/initializers/fae_fine.rb" : "../templates/initializers/fae.rb"
-      copy_file ::File.expand_path(::File.join(__FILE__, init_source)), "config/initializers/fae.rb"
-      inject_into_file "config/initializers/fae.rb", after: "Fae.setup do |config|\n" do <<-RUBY
-\n  config.devise_secret_key = '#{SecureRandom.hex(64)}'\n
-RUBY
-      end
+      copy_file ::File.expand_path(::File.join(__FILE__, "../templates/initializers/fae.rb")), "config/initializers/fae.rb"
     end
 
     def build_judge_initializer
       copy_file ::File.expand_path(::File.join(__FILE__, "../templates/initializers/judge.rb")), "config/initializers/judge.rb"
     end
 
+    def disable_api_only_mode
+      gsub_file(
+        'config/application.rb',
+        /config.api_only\s*=\s*true/,
+        'config.api_only = false'
+      )
+
+      gsub_file(
+        'config/application.rb',
+        /#\s*require "sprockets\/railtie"/,
+        'require "sprockets/railtie"'
+      )
+    end
   end
 end

@@ -9,10 +9,10 @@ namespace :fae do
 
     if Fae::Option.first.blank?
       option = Fae::Option.new({
-        title: 'My FINE Admin',
+        title: 'admin panel',
         singleton_guard: 0,
         time_zone: 'Pacific Time (US & Canada)',
-        live_url: 'http://www.wearefine.com'
+        live_url: 'https://www.example.com'
         })
       option.save!
     end

@@ -7,7 +7,7 @@ describe 'Global nav' do
       super_admin_login
       get fae_path
 
-      expect(response.body).to include('<a href="/admin/users">Users</a>')
+      expect(response.body).to include('<a href="/admin/admin_panel_users">Admin panel users</a>')
       expect(response.body).to include('<a href="/admin/activity">Activity Log</a>')
       expect(response.body).to include('<a href="/admin/root">Root Settings</a>')
     end
@@ -25,7 +25,7 @@ describe 'Global nav' do
       admin_login
       get fae_path
 
-      expect(response.body).to include('<a href="/admin/users">Users</a>')
+      expect(response.body).to include('<a href="/admin/admin_panel_users">Admin panel users</a>')
       expect(response.body).to include('<a href="/admin/activity">Activity Log</a>')
     end
 
@@ -49,7 +49,7 @@ describe 'Global nav' do
       user_login
       get fae_path
 
-      expect(response.body).to_not include('<a href="/admin/users">Users</a>')
+      expect(response.body).to_not include('<a href="/admin/admin_panel_users">Admin panel users</a>')
       expect(response.body).to_not include('<a href="/admin/activity">Activity Log</a>')
       expect(response.body).to_not include('<a href="/admin/root">Root Settings</a>')
     end

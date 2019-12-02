@@ -8,7 +8,7 @@ describe 'users#index' do
     end
 
     it 'should be able to access users' do
-      get fae.users_path
+      get fae.admin_panel_users_path
 
       expect(response.status).to eq(200)
     end
@@ -26,7 +26,7 @@ describe 'users#index' do
     end
 
     it 'should be able to access users' do
-      get fae.users_path
+      get fae.admin_panel_users_path
 
       expect(response.status).to eq(200)
     end
@@ -44,7 +44,7 @@ describe 'users#index' do
     end
 
     it "shouldn't be able to access users" do
-      get fae.users_path
+      get fae.admin_panel_users_path
 
       expect(response.status).to eq(302)
       expect(response).to redirect_to(fae.root_path)
@@ -60,7 +60,7 @@ describe 'users#index' do
   context 'when logged out' do
     it "shouldn't be able to access users" do
       create_super_user
-      get fae.users_path
+      get fae.admin_panel_users_path
 
       expect(response.status).to eq(302)
       expect(response).to redirect_to('/admin/login')
@@ -79,15 +79,15 @@ describe 'users#edit' do
     end
 
     it 'should be able to access user edit page' do
-      get fae.edit_user_path(edit_user)
+      get fae.edit_admin_panel_user_path(edit_user)
 
       expect(response.status).to eq(200)
     end
 
     it "should cancel to users#index" do
-      get fae.edit_user_path(edit_user)
+      get fae.edit_admin_panel_user_path(edit_user)
 
-      expect(response.body).to include('href="/admin/users" id="js-header-cancel"')
+      expect(response.body).to include('href="/admin/admin_panel_users" id="js-header-cancel"')
     end
   end
 
@@ -97,7 +97,7 @@ describe 'users#edit' do
     end
 
     it 'should be able to access user edit page' do
-      get fae.edit_user_path(edit_user)
+      get fae.edit_admin_panel_user_path(edit_user)
 
       expect(response.status).to eq(200)
     end
@@ -109,7 +109,7 @@ describe 'users#edit' do
     end
 
     it "shouldn't be able to access users" do
-      get fae.edit_user_path(edit_user)
+      get fae.edit_admin_panel_user_path(edit_user)
 
       expect(response.status).to eq(302)
       expect(response).to redirect_to(fae.root_path)

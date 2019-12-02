@@ -1,23 +1,23 @@
 module Fae
-  class UsersController < ApplicationController
+  class AdminPanelUsersController < ApplicationController
     before_action :admin_only, except: [:settings, :update]
     before_action :set_user, only: [:show, :edit, :update, :destroy]
     before_action :set_role_collection, except: [:index, :destroy]
     before_action :set_index_path, only: [:settings, :new, :edit]
 
     def index
-      @users = current_user.super_admin? ? Fae::User.all : Fae::User.public_users
+      @admin_panel_users = current_user.super_admin? ? Fae::User.all : Fae::User.public_users
     end
 
     def new
-      @user = Fae::User.new
+      @admin_panel_user = Fae::User.new
     end
 
     def edit
     end
 
     def settings
-      @user = current_user
+      @admin_panel_user = current_user
       # set index path to dashboard
       @index_path = root_path
     end
@@ -25,10 +25,10 @@ module Fae
     def create
       authorize_role
 
-      @user = Fae::User.new(user_params)
+      @admin_panel_user = Fae::User.new(user_params)
 
-      if @user.save
-        redirect_to users_path, notice: t('fae.save_notice')
+      if @admin_panel_user.save
+        redirect_to admin_panel_users_path, notice: t('fae.save_notice')
       else
         render action: 'new', error: t('fae.save_error')
       end
@@ -40,8 +40,8 @@ module Fae
       params[:user].delete(:password) if params[:user][:password].blank?
       params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
 
-      if @user.update(user_params)
-        path = current_user.super_admin_or_admin? ? users_path : fae.root_path
+      if @admin_panel_user.update(user_params)
+        path = current_user.super_admin_or_admin? ? admin_panel_users_path : fae.root_path
         redirect_to path, notice: t('fae.save_notice')
       else
         render action: 'edit', error: t('fae.save_error')
@@ -49,9 +49,9 @@ module Fae
     end
 
     def destroy
-      @user.destroy
+      @admin_panel_user.destroy
       respond_to do |format|
-        format.html { redirect_to users_url }
+        format.html { redirect_to admin_panel_users_url }
         format.json { head :no_content }
       end
     end
@@ -64,20 +64,20 @@ module Fae
       end
 
       def set_user
-        @user = Fae::User.find(params[:id])
+        @admin_panel_user = Fae::User.find(params[:id])
       end
 
       def user_params
         if current_user.super_admin_or_admin?
           params.require(:user).permit!
-        elsif @user === current_user
+        elsif @admin_panel_user === current_user
           params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
         end
       end
 
       def set_index_path
         # @index_path determines form's cancel btn path
-        @index_path = users_path
+        @index_path = admin_panel_users_path
       end
 
       def authorize_role

@@ -23,7 +23,7 @@ module Fae
 
     def add_route
       inject_into_file "config/routes.rb", after: "routes.draw do\n" do <<-RUBY
-  constraints subdomain: '#{options.namespace}' do
+  constraints subdomain: /^#{options.namespace}/ do
     scope module: '#{options.namespace}', as: '#{options.namespace}' do
     end
     mount Fae::Engine => '/'

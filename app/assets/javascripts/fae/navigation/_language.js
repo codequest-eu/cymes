@@ -45,7 +45,7 @@ Fae.navigation.language = {
 
       // POSTs to Utilities#language_preference to save user's language preference
       lang = lang || 'all'
-      var post_url = Fae.path + '/language_preference/' + lang;
+      var post_url = 'language_preference/' + lang;
       $.post(post_url);
 
       // Fade out extra error messages

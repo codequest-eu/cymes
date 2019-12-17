@@ -181,7 +181,7 @@ Fae.tables = {
         var object = serial.substr(0, serial.indexOf('['));
 
         $.ajax({
-          url: Fae.path+'/sort/'+object,
+          url: 'sort/'+object,
           type: 'post',
           data: serial,
           dataType: 'script',

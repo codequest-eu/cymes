@@ -18,14 +18,14 @@
   border-color: $color transparent transparent transparent;
 }
 
-@mixin user-select($val){
+@mixin user-select($val) {
   -webkit-user-select: $val; /* Chrome all / Safari all */
   -moz-user-select: $val; /* Firefox all */
   -ms-user-select: $val; /* IE 10+ */
   user-select: $val;
 }
 
-@mixin transform($value){
+@mixin transform($value) {
   -webkit-transform: $value;
   -moz-transform: $value;
   -ms-transform: $value;
@@ -33,18 +33,41 @@
   transform: $value;
 }
 
-@mixin gradient-vertical($start-color: $c-light-button, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
-  background-image: -webkit-gradient(linear, left $start-percent, left $end-percent, from($start-color), to($end-color));
-  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
-  background-image:  -moz-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
-  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+@mixin gradient-vertical(
+  $start-color: $c-light-button,
+  $end-color: #333,
+  $start-percent: 0%,
+  $end-percent: 100%
+) {
+  background-image: -webkit-gradient(
+    linear,
+    left $start-percent,
+    left $end-percent,
+    from($start-color),
+    to($end-color)
+  );
+  background-image: -webkit-linear-gradient(
+    top,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
+  background-image: -moz-linear-gradient(
+    top,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
+  background-image: linear-gradient(
+    to bottom,
+    $start-color $start-percent,
+    $end-color $end-percent
+  );
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0);
 }
 
 // quick mixin for using icon font in :before :after
 @mixin icon-stuff {
-  font-family: 'icons';
+  font-family: "icons";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -55,4 +78,20 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// mixin for 2 columns grid layout
+@mixin column {
+  flex: 1;
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  @media (max-width: 900px) {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
 }

@@ -32,6 +32,10 @@ module Fae
         order(order_method)
       end
 
+      def for_fae_global_search
+        [:fae_display_field]
+      end
+
       def order_method
         klass = name.constantize
         if klass.column_names.include? 'position'
@@ -51,7 +55,12 @@ module Fae
       end
 
       def fae_search(query)
-        all.to_a.keep_if { |i| i.fae_display_field.present? && i.fae_display_field.to_s.downcase.include?(query.downcase) }
+        all.to_a.keep_if do |record|
+          for_fae_global_search.any? do |method|
+            value = record.public_send(method)
+            value.present? && value.to_s.downcase.include?(query.downcase)
+          end
+        end
       end
 
       def to_csv

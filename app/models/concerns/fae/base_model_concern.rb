@@ -55,7 +55,7 @@ module Fae
       end
 
       def fae_search(query)
-        all.to_a.keep_if do |record|
+        for_fae_index.to_a.keep_if do |record|
           for_fae_global_search.any? do |method|
             value = record.public_send(method)
             value.present? && value.to_s.downcase.include?(query.downcase)

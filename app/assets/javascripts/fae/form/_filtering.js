@@ -120,8 +120,8 @@ Fae.form.filtering = {
         $('.js-reset-btn').show();
       })
 
-      // update hash when date inputs changed
-      .on('change', '.datepicker input', function() {
+      // update hash when inputs changed
+      .on('change', 'input', function() {
         var key = $(this).attr('id').split('filter_')[1];
         var value = $(this).val();
         timer = setTimeout(function() {

@@ -121,7 +121,7 @@ Fae.form.filtering = {
       })
 
       // update hash when inputs changed
-      .on('change', 'input', function() {
+      .on('keydown', 'input', function() {
         var key = $(this).attr('id').split('filter_')[1];
         var value = $(this).val();
         timer = setTimeout(function() {

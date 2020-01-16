@@ -3,7 +3,8 @@ module Fae
     include Fae::Sortable
     include Fae::ChangeConcern
 
-    belongs_to :user
+    # TODO: configurable tracking for changes from outside the admin panel
+    belongs_to :user, required: false
     belongs_to :changeable, polymorphic: true
 
     serialize :updated_attributes

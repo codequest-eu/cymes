@@ -1,20 +1,21 @@
 base: &base
   adapter: mysql2
-  encoding: utf8
-  collation: utf8_general_ci
-  database: fae_dummy
-  username: root
-  password:
-  host: localhost
+  encoding: utf8mb4
+  collation: utf8mb4_general_ci
+  database: cymes_developemnt
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASS'] %>
+  host: db
 
 development:
   <<: *base
 
 test:
   <<: *base
-  database: <%= ENV['MYSQL_DATABASE'] || 'fae_dummy_test' %>
-  username: <%= ENV['MYSQL_USER'] || 'root' %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+  database: cymes_developemnt
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASS'] %>
+  host: db
 
 
 remote_development:

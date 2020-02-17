@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Declare your gem's dependencies in fae.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -14,7 +15,7 @@ gemspec
 # gem 'debugger'
 
 # Set the version of Rails for the dummy app
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 
 # Lock in Rake to a version compatible with rspec-rails 3.0
 gem 'rake', '< 12.0.0'
@@ -37,9 +38,5 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
 end
-
-gem 'capistrano',  '~> 3.1'
-gem 'capistrano-rails', git: 'https://github.com/wearefine/rails'
-gem 'capistrano-rvm'
 
 gem 'mysql2'

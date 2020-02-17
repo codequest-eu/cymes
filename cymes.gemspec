@@ -35,10 +35,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form', '~> 5.0.0'
   s.add_dependency 'slim'
 
-  s.add_development_dependency 'appraisal'
-  s.add_development_dependency 'better_errors'
-  s.add_development_dependency 'binding_of_caller'
-  s.add_development_dependency 'rails-perftest'
-  s.add_development_dependency 'ruby-prof'
-  s.add_development_dependency 'thin'
+  # s.add_development_dependency 'appraisal'
+  # s.add_development_dependency 'better_errors'
+  # s.add_development_dependency 'binding_of_caller'
+  # s.add_development_dependency 'rails-perftest'
+  # s.add_development_dependency 'ruby-prof'
+  # s.add_development_dependency 'thin'
 end

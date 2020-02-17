@@ -85,7 +85,7 @@ module Fae
     end
 
     def table_template_path
-      "#{fae.root_path.gsub('/', '')}admin/#{@klass_name}/table"
+      "#{fae.root_path.gsub('/', '')}/#{@klass_name}/table"
     end
 
     def parent_foreign_key

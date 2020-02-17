@@ -24,7 +24,7 @@ class ValidationHelperCollection
 
   def slug
     {
-      uniqueness: true,
+      uniqueness: {case_sensitive: true},
       presence: true,
       format: {
         with: self.slug_regex,

@@ -1,0 +1,44 @@
+version: "3.7"
+
+x-common:
+  secrets:
+    - &mysql_user user
+    - &mysql_password password
+    - &mysql_database cymes_developemnt
+
+  services:
+    rails: &rails
+      build:
+        context: .
+      depends_on:
+        - db
+      volumes:
+        - .:/app/src
+        - bundle_cache:/app/src/bundle
+      # volumes are mounted as root, so we need to be root to be able to write to them
+      user: root:root
+      environment:
+        DATABASE_HOST: db
+        DATABASE_PASS: *mysql_password
+        DATABASE_USER: *mysql_user
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_USER: *mysql_user
+      MYSQL_PASSWORD: *mysql_password
+      MYSQL_ROOT_PASSWORD: *mysql_password
+      MYSQL_DATABASE: *mysql_database
+
+  web:
+    <<: *rails
+    command: rails server --port 4000 --binding 0.0.0.0
+    ports:
+      - "4000:4000"
+
+volumes:
+  bundle_cache:
+  db_data:

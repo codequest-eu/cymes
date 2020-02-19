@@ -16,7 +16,7 @@ module Fae
     require 'kaminari'
     require 'fae/version'
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    Dir["#{config.root}/lib/**/"].each { |f| require f }
 
     config.to_prepare do
       # Require decorators from main application

@@ -1,76 +1,78 @@
-class ValidationHelperCollection
+module Fae
+  class ValidationHelperCollection
 
-  def slug_regex
-    /\A[-_a-zA-Z0-9]+\z/
-  end
+    def slug_regex
+      /\A[-_a-zA-Z0-9]+\z/
+    end
 
-  def email_regex
-    /\A\s*(([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[\s\/,;]*)+\z/
-  end
+    def email_regex
+      /\A\s*(([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[\s\/,;]*)+\z/
+    end
 
-  def url_regex
-    /\A(https?:\/\/)/
-  end
+    def url_regex
+      /\A(https?:\/\/)/
+    end
 
-  def zip_regex
-    /\A(\d{5})?\z/
-  end
+    def zip_regex
+      /\A(\d{5})?\z/
+    end
 
-  def youtube_regex
-    /[a-zA-Z0-9_-]{11}/
-  end
+    def youtube_regex
+      /[a-zA-Z0-9_-]{11}/
+    end
 
-  ### Complete Hash Validations
+    ### Complete Hash Validations
 
-  def slug
-    {
-      uniqueness: {case_sensitive: true},
-      presence: true,
-      format: {
-        with: self.slug_regex,
-        message: 'cannot have spaces or special characters'
+    def slug
+      {
+        uniqueness: {case_sensitive: true},
+        presence: true,
+        format: {
+          with: self.slug_regex,
+          message: 'cannot have spaces or special characters'
+        }
       }
-    }
-  end
+    end
 
-  def email
-    {
-      allow_blank: true,
-      format: {
-        with: self.email_regex,
-        message: 'is invalid'
+    def email
+      {
+        allow_blank: true,
+        format: {
+          with: self.email_regex,
+          message: 'is invalid'
+        }
       }
-    }
-  end
+    end
 
-  def url
-    {
-      allow_blank: true,
-      format: {
-        with: self.url_regex,
-        message: 'is invalid'
+    def url
+      {
+        allow_blank: true,
+        format: {
+          with: self.url_regex,
+          message: 'is invalid'
+        }
       }
-    }
-  end
+    end
 
-  def zip
-    {
-      allow_blank: true,
-      format: {
-        with: self.zip_regex,
-        message: 'is invalid'
+    def zip
+      {
+        allow_blank: true,
+        format: {
+          with: self.zip_regex,
+          message: 'is invalid'
+        }
       }
-    }
-  end
+    end
 
-  def youtube_url
-    {
-      allow_blank: true,
-      format: {
-        with: self.youtube_regex,
-        message: 'is invalid'
+    def youtube_url
+      {
+        allow_blank: true,
+        format: {
+          with: self.youtube_regex,
+          message: 'is invalid'
+        }
       }
-    }
-  end
+    end
 
+  end
 end

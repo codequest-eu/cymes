@@ -16,13 +16,18 @@ module Fae
     require 'kaminari'
     require 'fae/version'
 
-    Dir["#{config.root}/lib/**/"].each { |f| require f }
+    config.autoload_paths += %W(#{config.root}/app/models/concerns/fae)
+    # Dir["#{config.root}/lib/**/"].each { |f| require f }
 
     config.to_prepare do
       # Require decorators from main application
       Dir.glob(Rails.root.join('app', 'decorators', '**', '*_decorator.rb')).each do |decorator|
         Rails.configuration.cache_classes ? require(decorator) : load(decorator)
       end
+
+      # Dir.glob(Rails.root.join('app', 'models', 'concerns', 'fae', '**', '*.rb')).each do |f|
+      #   require(f)
+      # end
 
       ApplicationController.helper(ApplicationHelper)
     end

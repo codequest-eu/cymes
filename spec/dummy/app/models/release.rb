@@ -15,7 +15,7 @@ class Release < ActiveRecord::Base
   validates :release_date, presence: true
 
   belongs_to :wine
-  belongs_to :varietal
+  belongs_to :varietal, optional: true
 
   has_many :acclaims
   has_many :aromas

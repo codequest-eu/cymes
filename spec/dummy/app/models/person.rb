@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  include Fae::Concerns::Models::Base
+  include Fae::BaseModelConcern
 
   def fae_display_field
     name
@@ -10,5 +10,5 @@ class Person < ActiveRecord::Base
 
   validates_presence_of :name
 
-  belongs_to :event
+  belongs_to :event, optional: true
 end

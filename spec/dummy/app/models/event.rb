@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  include Fae::Concerns::Models::Base
+  include Fae::BaseModelConcern
 
   def fae_display_field
     name
@@ -8,6 +8,6 @@ class Event < ActiveRecord::Base
   validates :city, inclusion: ["Los Angeles", "San Francisco", "Portland"];
   validates :name, presence: true
 
-  belongs_to :release
+  belongs_to :release, optional: true
   has_many :people
 end

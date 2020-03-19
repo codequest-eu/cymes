@@ -103,7 +103,7 @@ Fae.navigation.global_search = {
 
       // otherwise update the live search
       var val = _this.$input.val();
-      var post_url = 'search/' + val;
+      var post_url = '/search/' + val;
 
       // Match only values that exist within links - we don't want to highlight the labels
       // Positive lookahead

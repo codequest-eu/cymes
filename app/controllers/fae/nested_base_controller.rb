@@ -11,8 +11,7 @@ module Fae
       @item = @klass.new
       raise_undefined_parent if @item.fae_nested_foreign_key.blank?
 
-      item_id = params[:item_id].to_i || nil
-      @item.send("#{parent_foreign_key}=", item_id)
+      @item.send("#{parent_foreign_key}=", params[:item_id])
       build_assets
     end
 

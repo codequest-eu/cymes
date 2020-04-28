@@ -15,6 +15,8 @@ table class=table_class
         th.-thumb
       - cols.each do |col|
         = th_columns(col)
+      - if download_column
+        th.-action
       - if edit_column
         th.-action data-sorter="false"
       th.-action
@@ -31,6 +33,10 @@ table class=table_class
             - options_for_td[:col] = col
             - options_for_td[:item] = item
             = td_columns(options_for_td)
+          - if download_column
+            td
+              a.js-tooltip.table-action title='Download' href=(item.try(:image_url) || item.try(:file_url)) target='_blank'
+                i.icon-offlink
           - if edit_column
             td
               a.js-edit-link.js-tooltip.table-action title=t('fae.common.edit') href=self.send(edit_path, item)

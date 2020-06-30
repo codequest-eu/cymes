@@ -7,7 +7,7 @@
   }
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: $sidenav-width - 10px;
     top: 0;
@@ -32,7 +32,7 @@
     border-top: 1px solid $c-border;
     text-transform: uppercase;
     font-size: 14px;
-    letter-spacing: .2em;
+    letter-spacing: 0.2em;
     // counters the padding from .content
     margin: 0 negate($content-buffer) 30px;
   }
@@ -45,4 +45,26 @@
     color: $c-text-heavy;
     margin-bottom: 20px;
   }
+}
+
+// section.content,
+// .grid-form {
+//   width: inherit;
+//   display: flex;
+//   flex-direction: row;
+//   // flex-wrap: wrap;
+//   width: 100%;
+//   flex-flow: row wrap;
+//   justify-content: flex-start;
+// }
+
+main.content,
+section.content {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }

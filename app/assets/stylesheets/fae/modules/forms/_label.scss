@@ -1,9 +1,12 @@
+@import '../../globals/imports/mixins';
+
 label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 15px;
   color: $c-text-heavy;
+  // @include column;
 
   abbr {
     color: $c-custom-highlight;

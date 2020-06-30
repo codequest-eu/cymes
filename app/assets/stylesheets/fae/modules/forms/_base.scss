@@ -1,17 +1,21 @@
-input[type=text],
-input[type=number],
-input[type=textarea],
-input[type=url],
-input[type=tel],
-input[type=password],
-input[type=email] {
-  @include transition(border-color .2s);
+@import "../../globals/imports/mixins";
+
+input[type="text"],
+input[type="number"],
+input[type="textarea"],
+input[type="url"],
+input[type="tel"],
+input[type="password"],
+input[type="email"] {
+  @include transition(border-color 0.2s);
   padding: 12px 15px;
   border: 1px solid $c-border;
   font-size: 14px;
   outline: none;
   border-radius: 2px;
   max-width: 100%;
+  width: 100%;
+  // @include column;
 
   &:focus {
     border-color: $c-notice-content;
@@ -21,8 +25,22 @@ input[type=email] {
 .input {
   margin-bottom: 20px;
 
+  @include column;
+
   &.disabled {
     opacity: 0.5;
+  }
+  .asset-actions {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .input {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
   }
 }
 

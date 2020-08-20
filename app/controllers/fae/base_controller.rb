@@ -43,7 +43,7 @@ module Fae
       else
         build_assets
         flash[:alert] = t('fae.save_error')
-        render action: 'new'
+        render action: 'new', status: :unprocessable_entity
       end
     end
 
@@ -53,7 +53,7 @@ module Fae
       else
         build_assets
         flash[:alert] = t('fae.save_error')
-        render action: 'edit'
+        render action: 'edit', status: :unprocessable_entity
       end
     end
 

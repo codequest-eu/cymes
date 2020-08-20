@@ -29,7 +29,7 @@ module Fae
         render template: table_template_path
       else
         build_assets
-        render action: 'new'
+        render action: 'new', status: :unprocessable_entity
       end
     end
 
@@ -42,7 +42,7 @@ module Fae
         render template: table_template_path
       else
         build_assets
-        render action: 'edit'
+        render action: 'edit', status: :unprocessable_entity
       end
     end
 

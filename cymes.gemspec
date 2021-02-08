@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   # other dependencies
   s.add_dependency 'acts_as_list', '~> 0.9.11'
   s.add_dependency 'browser', '~> 2.5.3'
-  s.add_dependency 'carrierwave', '~> 1.2.2'
+  s.add_dependency 'carrierwave', '>= 1.2.2', '< 2.2.0'
   s.add_dependency 'devise', '~> 4.7.1'
   s.add_dependency 'jquery-ui-rails', '~> 6.0.1'
   s.add_dependency 'mini_magick'
